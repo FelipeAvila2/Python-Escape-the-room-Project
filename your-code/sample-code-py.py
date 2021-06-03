@@ -5,128 +5,218 @@
 
 
 # define rooms and items
+# All Objects (furniture)
 
-couch = {
-    "name": "couch",
+career_hack_chairs = {
+    "name": "career_hack_chairs",
     "type": "furniture",
 }
 
+dish_washer = {
+    "name": "dish_washer",
+    "type": "furniture",
+}
+
+eating_seats = {
+    "name": "eating_seats",
+    "type": "furniture",
+}
+
+toilet_m = {
+    "name": "toilet_m",
+    "type": "furniture",
+}
+
+toilet_f = {
+    "name": "toilet_f",
+    "type": "furniture",
+}
+
+
+
+# All Objects (human)
+
+catarina = {
+    "name": "catarina",
+    "type": "human",
+}
+
+david = {
+    "name": "david",
+    "type": "human",
+}
+
+fred = {
+    "name": "fred",
+    "type": "human",
+}
+
+
+
+# All Objects (door)
+
 door_a = {
-    "name": "door a",
+    "name": "door_a",
     "type": "door",
 }
 
-key_a = {
-    "name": "key for door a",
-    "type": "key",
-    "target": door_a,
-}
-
-piano = {
-    "name": "piano",
-    "type": "furniture",
-}
-
-game_room = {
-    "name": "game room",
-    "type": "room",
-}
-
-outside = {
-  "name": "outside"
-}
-
-bedroom_1 = {
-    "name": "bedroom 1",
-    "type": "room",
-}
-
-bedroom_2 = {
-    "name": "bedroom 2",
-    "type": "room"
-}
-
-living_room = {
-    "name": "living room",
-    "type": "room"
-}
-
-queen_bed = {
-    "name": "queen bed",
-    "type": "furniture",
-}
-
 door_b = {
-    "name": "door b",
+    "name": "door_b",
     "type": "door",
 }
 
 door_c = {
-    "name": "door c",
+    "name": "door_c",
     "type": "door",
 }
 
 door_d = {
-    "name": "door d",
+    "name": "door_d",
     "type": "door",
 }
 
-key_b = {
-    "name": "key for door b",
+door_e = {
+    "name": "door_e",
+    "type": "door",
+}
+
+door_f = {
+    "name": "door_f",
+    "type": "door",
+}
+
+door_i = {
+    "name": "door_i",
+    "type": "door",
+}
+
+
+# All Objects (rooms)
+
+game_room = {
+    "name": "game_room",
+    "type": "room",
+}
+
+presentation_room = {
+    "name": "presentation_room",
+    "type": "room",
+}
+
+dinning_room = {
+    "name": "dinning_room",
+    "type": "room",
+}
+
+corridor = {
+    "name": "corridor",
+    "type": "room",
+}
+
+hallway = {
+    "name": "hallway",
+    "type": "room",
+}
+
+data_analytics_room = {
+    "name": "data_analytics_room",
+    "type": "room",
+}
+
+web_dev_room = {
+    "name": "web_dev_room",
+    "type": "room",
+}
+
+conference_room = {
+    "name": "conference_room",
+    "type": "room",
+}
+
+outside = {
+    "name": "outside"
+    "type": "room"
+}
+
+# All Objects (keys)
+
+key_1 = {
+    "name": "careerhack",
+    "type": "key",
+    "target": door_a,
+}
+
+key_2 = {
+    "name": "dishwasher1",
     "type": "key",
     "target": door_b,
 }
 
-double_bed = {
-    "name": "double bed",
-    "type": "furniture",
-}
-
-dresser = {
-    "name": "dresser",
-    "type": "furniture"
-}
-
-key_c = {
-    "name": "key for door c",
+key_3 = {
+    "name": "key_3",
     "type": "key",
     "target": door_c,
 }
 
-key_d = {
-    "name": "key for door d",
+key_4 = {
+    "name": "open",
     "type": "key",
     "target": door_d,
 }
 
-dinner_table = {
-    "name": "dinner table",
-    "type": "furniture",
+key_5 = {
+    "name": "key_5",
+    "type": "key",
+    "target": door_e,
 }
 
+key_6 = {
+    "name": "dishwasher2",
+    "type": "key",
+    "target": door_f,
+}
 
-all_rooms = [game_room, bedroom_1, bedroom_2, living_room, outside]
+key_7 = {
+    "name": "david",
+    "type": "key",
+    "target": door_g,
+}
 
-all_doors = [door_a, door_b, door_c, door_d]
+all_rooms = [game_room, 
+             presentation_room, 
+             dinning_room, 
+             corridor, 
+             hallway, 
+             data_analytics_room, 
+             web_dev_room, 
+             conference_room, 
+             outside]
+
+all_doors = [door_a, door_b, door_c, door_d, door_e, door_f, door_g]
+
 
 # define which items/rooms are related
 
 object_relations = {
-    "game room": [couch, piano, door_a],
-    "piano": [key_a],
-    "outside": [door_d],
-    "door a": [game_room, bedroom_1],
-    "bedroom 1": [queen_bed, door_b, door_c],
-    "queen bed": [key_b],
-    "door b": [bedroom_1, bedroom_2],
-    "door c": [bedroom_1, living_room],
-    "door d": [outside, living_room],
-    "bedroom 2": [double_bed, dresser, door_b],
-    "double bed": [key_c],
-    "dresser": [key_d],
-    "living room": [dinner_table, door_c, door_d],
+    "game_room": [career_hack_chairs, catarina, door_a],
+    "catarina": [key_1],
+    
+    "door_a": [game_room, dinning_room],
+    "dinning_room": [dish_washer, eating_seats, door_a, door_b],
+    "dish_washer": [key_2, key_6],
+    
+    "door_b": [dinning_room, corridor],
+    "corridor": [door_b, door_c, door_d, door_e, door_f],
+    
+    "data_analytics_room": [david, fred, door_f],
+    "david": [key_7],
+    
+    "hallway": [toilet_m, toilet_f, door_d, door_g],
+        
+    "outside": [door_g]
 
 }
+
 
 # define game state. Do not directly change this dict. 
 # Instead, when a new game starts, make a copy of this
