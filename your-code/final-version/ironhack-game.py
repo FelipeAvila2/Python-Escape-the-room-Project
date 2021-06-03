@@ -300,7 +300,7 @@ def examine_item(item_name):
                         item_found = object_relations[item["name"]].pop()
                         game_state["keys_collected"].append(item_found)
                         output += "David says: Hurry up! I've already started class!\nBut I see here that you have done it all so congrats and here is the " + \
-                                  item_found["name"] + "!"  # FAZER
+                                  item_found["name"] + "!"
                     elif item["name"] == "fred":
                         output += "Fred says: Hi! I am Fred, your friendly TA! So happy you are here! Let's work!"
                     elif item["name"] == "dish_washer":
