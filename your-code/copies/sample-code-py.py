@@ -139,9 +139,17 @@ INIT_GAME_STATE = {
     "target_room": outside
 }
 
+user_data = {
+    "name": "",
+    "user_gender": "",
+}
 
 # In[2]:
 
+
+def user():
+    user_data["name"] = input("Hi! Welcome to our little IronHack-game. Please, give us your name: ")
+    user_data["user_gender"] = input("We're sorry, but our bathrooms have a binary system, what is your gender?")
 
 def linebreak():
     """
@@ -151,10 +159,12 @@ def linebreak():
 
 def start_game():
     """
-    Start the game
+    Start the game and calls for the user data
     """
+    user()
     print("You wake up on a couch and find yourself in a strange house with no windows which you have never been to before. You don't remember why you are here and what had happened before. You feel some unknown danger is approaching and you must get out of the house, NOW!")
     play_room(game_state["current_room"])
+
 
 def play_room(room):
     """
@@ -192,8 +202,16 @@ def get_next_room_of_door(door, current_room):
     """
     connected_rooms = object_relations[door["name"]]
     for room in connected_rooms:
-        if(not current_room == room):
+        if (not current_room == room):
             return room
+
+def human_interaction(human):
+    # preciso dar um jeito de fazer a interação humana para colocar no último else
+    # da função examine_item
+    message_found = None
+    if human["type"] == "human":
+        message_found = object_relations[human["message"]].pop()
+    return message_found
 
 def examine_item(item_name):
     """
@@ -223,13 +241,16 @@ def examine_item(item_name):
                     next_room = get_next_room_of_door(item, current_room)
                 else:
                     output += "It is locked but you don't have the key."
+            elif ((item["name"] in object_relations and len(object_relations[item["name"]])>0)) and (item["type"] == "furniture"):
+                # (item["name"] in object_relations and len(object_relations[item["name"]])>0):
+                item_found = object_relations[item["name"]].pop()
+                game_state["keys_collected"].append(item_found)
+                output += "You find " + item_found["name"] + "."
             else:
-                if(item["name"] in object_relations and len(object_relations[item["name"]])>0):
-                    item_found = object_relations[item["name"]].pop()
-                    game_state["keys_collected"].append(item_found)
-                    output += "You find " + item_found["name"] + "."
-                else:
-                    output += "There isn't anything interesting about it."
+                human_interaction(item)
+
+        else:
+            output += "There isn't anything interesting about it."
             print(output)
             break
 
