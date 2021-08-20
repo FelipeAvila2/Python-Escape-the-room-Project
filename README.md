@@ -38,19 +38,36 @@ Besided the general gaming mechanic some special features where created:
 - play_again
   - after the game ends you get a option to play the game again
 
-![image](https://user-images.githubusercontent.com/83870535/129184803-c56c8872-ef87-4edc-9a32-5b0e5fb984ec.png)
+```python
+def play_again():
+    play = input("Do you want to do it again? 'yes' or 'no': ")
+    if play == "yes":
+        start_game()
+```
 
 
 - user
   - you get a unique user for every person that plays
 
-![image](https://user-images.githubusercontent.com/83870535/129184878-23a0d7f8-ea3a-4b22-9cb5-0894561b256c.png)
+```python
+def user():
+    user_data["name"] = input("Hi! Welcome to our little IronHack-game. Please, give us your name: ")
+    user_data["user_gender"] = input(
+        "We're sorry, but our bathrooms have a binary system, what is your gender? 'M or 'F: ")
+    linebreak()
+    print("Ok! Now lets start this journey!")
+```
 
 
 - user_object
   - this user is a object itself and has propertys like gender
 
-![image](https://user-images.githubusercontent.com/83870535/129184913-43b0dfa2-d36c-43d8-9b8d-eeacaca3f46a.png)
+```python
+user_data = {
+    "name": "",
+    "user_gender": "",
+}
+```
 
 
 ## The map of the game
